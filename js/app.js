@@ -66,7 +66,7 @@ const displayNews =(data, name)=> {
     </div>
         `
         div.classList.add("container");
-        div.setAttribute("data-bs-target","#exampleModal")
+        div.setAttribute("data-bs-target","#staticBackdrop")
         div.setAttribute("data-bs-toggle","modal")
         newsContainer.appendChild(div);
         div.addEventListener("click", () => {
@@ -86,12 +86,12 @@ const loadNews = (data) => {
     const modalSection = document.getElementById("modal-section");
     const div = document.createElement("div");
     div.innerHTML = `
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header flex-column">
                 <img src=${data.image_url} class="img-fluid" alt="">
-                <h5 class="modal-title mt-3" id="exampleModalLabel">${data.title}</h5>
+                <h5 class="modal-title mt-3" id="staticBackdropLabel">${data.title}</h5>
             </div>
             <div class="modal-body">
                 <div>
