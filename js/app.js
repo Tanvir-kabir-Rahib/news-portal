@@ -34,6 +34,7 @@ const displayNews =(data, name)=> {
     result.innerText = `${data.length}`;
     categoryName.innerText = `${name}`;
     resultContainer.classList.remove("d-none");
+    data.sort((view1, view2) => view2.total_view-view1.total_view);
     data.forEach(news => {
         const div = document.createElement("div");
         div.innerHTML = `
@@ -57,7 +58,7 @@ const displayNews =(data, name)=> {
                     </div>
                     <div class="d-flex align-items-center">
                         <i class="fa-regular fa-eye pe-2 fs-3"></i>
-                        <span class="fs-5">${news.total_view}</span>
+                        <span class="fs-5">${(news.total_view)?news.total_view:"Not Available"}</span>
                     </div>
                 </div>
             </div>
