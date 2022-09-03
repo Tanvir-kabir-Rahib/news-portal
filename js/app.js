@@ -16,7 +16,7 @@ function navItem(data) {
         span.addEventListener("click", () => {
             fetch(`https://openapi.programming-hero.com/api/news/category/${category.category_id}`)
                 .then(res => res.json())
-                .then(data => displayNews(data.data))
+                .then(data => displayNews(data.data, category.category_name))
                 .catch((error) => {
                     console.log(error);
                 });
@@ -25,12 +25,14 @@ function navItem(data) {
     });
 }
 
-function displayNews(data) {
+function displayNews(data, name) {
     const newsContainer = document.getElementById("news-container");
     newsContainer.textContent = "";
     const resultContainer = document.getElementById("result-container");
     const result = document.getElementById("result");
-    result.innerText = `${data.length}`
+    const categoryName = document.getElementById("category-name");
+    result.innerText = `${data.length}`;
+    categoryName.innerText = `${name}`;
     resultContainer.classList.remove("d-none");
     data.forEach(news => {
         const div = document.createElement("div");
@@ -47,10 +49,10 @@ function displayNews(data) {
                 </div>
                 <div class="m-3 d-flex justify-content-evenly">
                     <div class="d-flex justify-content-start">
-                        <img src=${news.author.img} class="rounded-circle author-img" alt="...">
+                        <img src=${(news.author.img)?news.author.img:"Not Available"} class="rounded-circle author-img" alt="...">
                         <div class="ms-2">
-                            <p class="mb-0">${news.author.name}</p>
-                            <p class="mb-0">${news.author.published_date}</p>
+                            <p class="mb-0">${(news.author.name)?news.author.name:"Not Available"}</p>
+                            <p class="mb-0">${(news.author.published_date)?news.author.published_date:"Not Available"}</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -96,7 +98,7 @@ function loadNews(data) {
                 </div>
                 <div class="d-flex align-items-center mt-3">
                     <i class="fa-regular fa-eye pe-2 fs-3"></i>
-                    <span class="fs-5">${data.total_view}</span>
+                    <span class="fs-5">${(data.total_view)? data.total_view : "Not Available"}</span>
                 </div>
                 <div class="d-flex align-items-center mt-3">
                     <i class="fa-solid fa-star me-2 fs-3"></i>
