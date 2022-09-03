@@ -3,7 +3,7 @@ fetch("https://openapi.programming-hero.com/api/news/categories")
     .then(data => navItem(data.data.news_category))
     .catch((error) => {
         console.log(error)
-      });
+    });
 
 
 function navItem(data) {
@@ -20,6 +20,7 @@ function navItem(data) {
             .catch((error) => {
                 console.log(error)
             });
+            spinner(true)
         });
     });
 }
@@ -63,15 +64,17 @@ function displayNews(data) {
         `
         div.classList.add("container")
         newsContainer.appendChild(div)
+
     });
+    spinner(false)
 }
 
-function spinner(spin){
+function spinner(spin) {
     const loader = document.getElementById("loader");
-    if(spin){
+    if (spin) {
         loader.classList.remove("d-none");
     }
-    else{
+    else {
         loader.classList.add("d-none")
     }
 }
