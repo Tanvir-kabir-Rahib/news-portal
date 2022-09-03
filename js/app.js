@@ -14,6 +14,14 @@ const navItem =(data)=> {
         span.classList.add("text-secondary", "fs-5", "pointer");
         categoryContainer.appendChild(span);
         span.addEventListener("click", () => {
+            document.querySelectorAll("#category span").forEach(cate => {
+                if(cate.innerText === category.category_name){
+                    cate.classList.add("text-info")
+                }
+                else{
+                    cate.classList.remove("text-info")
+                }
+            })
             fetch(`https://openapi.programming-hero.com/api/news/category/${category.category_id}`)
                 .then(res => res.json())
                 .then(data => displayNews(data.data, category.category_name))
