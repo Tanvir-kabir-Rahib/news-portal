@@ -36,26 +36,30 @@ function displayNews(data) {
         div.innerHTML = `
         <div class="card mb-5">
         <div class="row g-0">
-        <div class="col-md-4">
-        <img src=${news.image_url} class="img-fluid rounded-start" alt="...">
+            <div class="col-md-4">
+                <img src=${news.image_url} class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${news.title}</h5>
+                    <p class="card-text text-secondary overflow-ellipsis">${news.details}</p>
+                </div>
+                <div class="m-3 d-flex justify-content-evenly">
+                    <div class="d-flex justify-content-start">
+                        <img src=${news.author.img} class="rounded-circle author-img" alt="...">
+                        <div class="ms-2">
+                            <p class="mb-0">${news.author.name}</p>
+                            <p class="mb-0">${news.author.published_date}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-regular fa-eye pe-2 fs-3"></i>
+                        <span class="fs-5">${news.total_view}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-        <div class="card-body">
-        <h5 class="card-title">${news.title}</h5>
-        <p class="card-text text-secondary overflow-ellipsis">${news.details}</p>
-        </div>
-        <div class="ms-3">
-        <div class="d-flex justify-content-start">
-        <img src= ${news.author.img} class="rounded-circle author-img" alt="...">
-        <div class="ms-2">
-        <p class="mb-0">${news.author.name}</p>
-        <p class="mb-0">${news.author.published_date}</p>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+    </div>
         `
         div.classList.add("container")
         newsContainer.appendChild(div)
