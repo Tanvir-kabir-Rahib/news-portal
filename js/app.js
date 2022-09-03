@@ -6,7 +6,7 @@ fetch("https://openapi.programming-hero.com/api/news/categories")
     });
 
 
-function navItem(data) {
+const navItem =(data)=> {
     data.forEach(category => {
         const span = document.createElement("span");
         const categoryContainer = document.getElementById("category");
@@ -25,7 +25,7 @@ function navItem(data) {
     });
 }
 
-function displayNews(data, name) {
+const displayNews =(data, name)=> {
     const newsContainer = document.getElementById("news-container");
     newsContainer.textContent = "";
     const resultContainer = document.getElementById("result-container");
@@ -81,7 +81,7 @@ function displayNews(data, name) {
     spinner(false)
 }
 
-function loadNews(data) {
+const loadNews = (data) => {
     const modalSection = document.getElementById("modal-section");
     const div = document.createElement("div");
     div.innerHTML = `
@@ -114,16 +114,21 @@ function loadNews(data) {
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button onclick="clearModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
   `
-    modalSection.appendChild(div)
+    modalSection.appendChild(div);
 }
 
-function spinner(spin) {
+const clearModal =()=> { 
+    const modalSection = document.getElementById("modal-section");
+    modalSection.textContent = ""
+}
+
+const spinner =(spin)=> {
     const loader = document.getElementById("loader");
     if (spin) {
         loader?.classList.remove("d-none");
