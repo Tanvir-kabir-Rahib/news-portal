@@ -39,7 +39,12 @@ const displayNews =(data, name)=> {
     const resultContainer = document.getElementById("result-container");
     const result = document.getElementById("result");
     const categoryName = document.getElementById("category-name");
-    result.innerText = `${data.length}`;
+    if(data.length !== 0){
+        result.innerText = `${data.length}`;
+    }
+    else{
+        result.innerText = "No";
+    }
     categoryName.innerText = `${name}`;
     resultContainer.classList.remove("d-none");
     data.sort((view1, view2) => view2.total_view-view1.total_view);
